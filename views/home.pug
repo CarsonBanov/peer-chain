@@ -1,0 +1,32 @@
+script(src="http://cdn.peerjs.com/0.3/peer.js")
+
+script.
+  var count = "#{count}";
+  var prevCount = "#{prevCount}";
+
+  console.log(count);
+
+  //- "Join" pool of peers.
+  var peer = new Peer(count, {host: "localhost", port: 9000, path: "/api"});
+
+  //- Accept incoming connections.
+  //- "Listen to your friend!"
+  peer.on("connection", function(conn) {
+    conn.on("data", function(data){
+      //- "Print what your friend said."
+      console.log(data);
+    });
+  });
+
+  //- Send outgoing connection if we have one.
+  //- "Tell your friend!"
+  if (prevCount !== "") {
+    var conn = peer.connect(prevCount);
+    conn.on("open", function(){
+      //- "Tell your friend your name!"
+      conn.send("hi, my name is " + count + "!");
+    });
+  }
+
+.carson Hello, #{count}.
+.carson Your friend is, #{prevCount}.

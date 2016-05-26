@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/CarsonBanov/peer-chain/issues"
   },
-  "homepage": "https://github.com/CarsonBanov/peer-chain#readme"
+  "homepage": "https://github.com/CarsonBanov/peer-chain#readme",
+  "dependencies": {
+    "express": "=4.13.4",
+    "nodemon": "=1.9.2",
+    "peer": "=0.2.8",
+    "pug": "=2.0.0-alpha8"
+  }
 }
